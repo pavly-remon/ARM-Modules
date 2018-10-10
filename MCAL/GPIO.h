@@ -1,7 +1,7 @@
 /*
  * GPIO.h
  *
- *  Created on: Oct 4, 2018
+ *  Created on: October 4, 2018
  *      Author: PRRAG
  */
 
