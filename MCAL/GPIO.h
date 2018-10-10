@@ -2,7 +2,7 @@
  * GPIO.h
  *
  *  Created on: Oct 4, 2018
- *      Author: Pavly Remon
+ *      Author: PRRAG
  */
 
 #ifndef GPIO_H_

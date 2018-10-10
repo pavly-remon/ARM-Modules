@@ -2,7 +2,7 @@
  * GPIO.c
  *
  *  Created on: Oct 4, 2018
- *      Author: Pavly Remon
+ *      Author: PRRAG
  */
 
 #include "tm4c123gh6pm.h"
