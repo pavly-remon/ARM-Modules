@@ -8,13 +8,14 @@
 #include "tm4c123gh6pm.h"
 #include "GPIO.h"
 
-void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL){
+void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL,u8 PUR){
     switch (PORTName){
         case 'A':
             SYSCTL_RCGCGPIO_R |= (1<<A);
             GPIO_PORTA_DEN_R = DEN;
             GPIO_PORTA_DIR_R = DIR;
             GPIO_PORTA_PCTL_R = PCTL;
+            GPIO_PORTA_PUR_R = PUR;
             break;
 
         case 'B':
@@ -22,6 +23,7 @@ void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL){
             GPIO_PORTB_DEN_R = DEN;
             GPIO_PORTB_DIR_R = DIR;
             GPIO_PORTB_PCTL_R = PCTL;
+            GPIO_PORTB_PUR_R = PUR;
             break;
 
         case 'C':
@@ -29,6 +31,7 @@ void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL){
             GPIO_PORTC_DEN_R = DEN;
             GPIO_PORTC_DIR_R = DIR;
             GPIO_PORTC_PCTL_R = PCTL;
+            GPIO_PORTC_PUR_R = PUR;
             break;
 
         case 'D':
@@ -36,13 +39,15 @@ void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL){
             GPIO_PORTD_DEN_R = DEN;
             GPIO_PORTD_DIR_R = DIR;
             GPIO_PORTD_PCTL_R = PCTL;
+            GPIO_PORTD_PUR_R = PUR;
             break;
 
         case 'E':
             SYSCTL_RCGCGPIO_R |= (1<<E);
-            GPIO_PORTD_DEN_R = DEN;
-            GPIO_PORTD_DIR_R = DIR;
-            GPIO_PORTD_PCTL_R = PCTL;
+            GPIO_PORTE_DEN_R = DEN;
+            GPIO_PORTE_DIR_R = DIR;
+            GPIO_PORTE_PCTL_R = PCTL;
+            GPIO_PORTE_PUR_R = PUR;
             break;
 
         case 'F':
@@ -50,6 +55,7 @@ void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL){
             GPIO_PORTF_DEN_R = DEN;
             GPIO_PORTF_DIR_R = DIR;
             GPIO_PORTF_PCTL_R = PCTL;
+            GPIO_PORTF_PUR_R = PUR;
             break;
 
         default:
