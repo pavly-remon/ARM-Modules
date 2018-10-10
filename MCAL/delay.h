@@ -2,7 +2,7 @@
  * delay.h
  *
  *  Created on: Oct 4, 2018
- *      Author: pavly
+ *      Author: pavly remon
  */
 
 #ifndef DELAY_H_

@@ -2,7 +2,7 @@
  * delay.c
  *
  *  Created on: Oct 4, 2018
- *      Author: pavly
+ *      Author: pavly remon
  */
 #include "tm4c123gh6pm.h"
 #include "delay.h"
