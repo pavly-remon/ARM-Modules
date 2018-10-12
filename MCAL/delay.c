@@ -23,7 +23,6 @@ extern delay_ms(unsigned int delay){
         SysTick_wait(counts);
     }
 }
-
 extern delay_us(unsigned int delay){
     unsigned int i;
     unsigned int counts = 0.000001*F_CPU;
