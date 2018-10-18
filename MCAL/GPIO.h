@@ -22,7 +22,8 @@ typedef enum {
 #define F 5
 
 extern void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL,u8 PUR);
-extern void GPIO_vWritePORT(u8 PORTName,u8 val);
-extern Status GPIO_cReadPin(u8 PORTName,u8 PinNum,u8 *val);
+extern Status GPIO_sWritePORT(u8 PORTName,u8 val);
+extern Status GPIO_sReadPin(u8 PORTName,u8 PinNum,u8 *val);
+extern Status GPIO_sWritePin(u8 PORTName,u8 PinNum,u8 val);
 
 #endif /* GPIO_H_ */

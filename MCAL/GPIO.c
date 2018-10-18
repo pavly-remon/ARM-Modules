@@ -62,40 +62,46 @@ void GPIO_vSetConfig(u8 PORTName,u8 DEN,u8 DIR,u8 PCTL,u8 PUR){
             break;
     }
 }
-void GPIO_vWritePORT(u8 PORTName,u8 val){
+Status GPIO_sWritePORT(u8 PORTName,u8 val){
     if((SYSCTL_RCGCGPIO_R&(1<<(PORTName-'A'))) == 0){      //ASCII of char - ASCII of A = number of port
         return;
     }
     switch (PORTName){
         case 'A':
             GPIO_PORTA_DATA_R = (GPIO_PORTA_DIR_R & val);
-            break;
+            return Ok;
 
         case 'B':
             GPIO_PORTB_DATA_R = (GPIO_PORTB_DIR_R & val);
-            break;
+            return Ok;
 
         case 'C':
             GPIO_PORTC_DATA_R = (GPIO_PORTC_DIR_R & val);
-            break;
+            return Ok;
 
         case 'D':
             GPIO_PORTD_DATA_R = (GPIO_PORTD_DIR_R & val);
-            break;
+            return Ok;
 
         case 'E':
             GPIO_PORTE_DATA_R = (GPIO_PORTE_DIR_R & val);
-            break;
+            return Ok;
 
         case 'F':
             GPIO_PORTF_DATA_R = (GPIO_PORTF_DIR_R & val);
-            break;
+            return Ok;
 
         default:
-            break;
+            return Nok;
     }
 }
-Status GPIO_cReadPin(u8 PORTName,u8 PinNum,u8 *val){
+Status GPIO_sReadPin(u8 PORTName,u8 PinNum,u8 *val){
+
+    /*PORTName is a character that point to the PORT {'A','B','C','D','E','F'}
+     * PinNum is from 0 to 7
+     * pointer val point to the address of variable to return the reading of pin
+     */
+
     if((SYSCTL_RCGCGPIO_R&(1<<(PORTName-'A'))) == 0){      //ASCII of char - ASCII of A = number of port
         return Nok;
     }
@@ -127,4 +133,73 @@ Status GPIO_cReadPin(u8 PORTName,u8 PinNum,u8 *val){
            default:
                return Nok;
        }
+}
+Status GPIO_sWritePin(u8 PORTName,u8 PinNum,u8 val){
+    /*PORTName is a character that point to the PORT {'A','B','C','D','E','F'}
+     * PinNum is from 0 to 7
+     *\val is logic 1 or logic 0
+     */
+
+    if((SYSCTL_RCGCGPIO_R&(1<<(PORTName-'A'))) == 0){      //ASCII of char - ASCII of A = number of port
+        return Nok;
+    }
+    switch (PORTName){
+           case 'A':
+               if(val){
+                   GPIO_PORTA_DATA_R |= (1<<PinNum);
+               }
+               else{
+                   GPIO_PORTA_DATA_R &= ~(1<<PinNum);
+               }
+               return Ok;
+
+           case 'B':
+               if(val){
+                  GPIO_PORTB_DATA_R |= (1<<PinNum);
+               }
+               else{
+                  GPIO_PORTB_DATA_R &= ~(1<<PinNum);
+               }
+               return Ok;
+
+           case 'C':
+               if(val){
+                  GPIO_PORTC_DATA_R |= (1<<PinNum);
+               }
+               else{
+                  GPIO_PORTC_DATA_R &= ~(1<<PinNum);
+               }
+               return Ok;
+
+           case 'D':
+               if(val){
+                  GPIO_PORTD_DATA_R |= (1<<PinNum);
+               }
+               else{
+                  GPIO_PORTD_DATA_R &= ~(1<<PinNum);
+               }
+               return Ok;
+
+           case 'E':
+               if(val){
+                  GPIO_PORTE_DATA_R |= (1<<PinNum);
+               }
+               else{
+                  GPIO_PORTE_DATA_R &= ~(1<<PinNum);
+               }
+               return Ok;
+
+           case 'F':
+               if(val){
+                  GPIO_PORTF_DATA_R |= (1<<PinNum);
+               }
+               else{
+                  GPIO_PORTF_DATA_R &= ~(1<<PinNum);
+               }
+               return Ok;
+
+           default:
+               return Nok;
+   }
+
 }
